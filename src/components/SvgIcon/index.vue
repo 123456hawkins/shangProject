@@ -8,7 +8,9 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
+import { watchEffect } from 'vue'
+
+const props = defineProps({
   //xlink:href属性值的前缀
   prefix: {
     type: String,
@@ -31,6 +33,9 @@ defineProps({
     type: String,
     default: '16px',
   },
+})
+watchEffect(() => {
+  console.log('yanse', props.color)
 })
 </script>
 <style scoped lang="scss"></style>

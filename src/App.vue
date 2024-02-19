@@ -1,13 +1,14 @@
 <template>
-  <div>我的vite+vue项目</div>
-  <svg-icon name="phone" fill="red"></svg-icon>
-  <svg-icon name="back" fill="green"></svg-icon>
+  <div>
+    <span class="container">ceshi</span>
+    <svg-icon name="phone" color="red"></svg-icon>
+    <svg-icon name="back" color="green"></svg-icon>
+  </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-let a = ref('1')
-console.log(a)
-</script>
-<style scoped lang="scss"></style>
+<script setup lang="ts"></script>
+<style scoped lang="scss">
+.container {
+  color: $color;
+}
+</style>

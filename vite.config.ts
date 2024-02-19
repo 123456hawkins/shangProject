@@ -18,4 +18,13 @@ export default defineConfig({
       '@': path.resolve('./src'), //路径相对别名，用@代替src
     },
   },
+  // 配置全局变量
+  css: {
+    preprocessorOptions: {
+      scss: {
+        javascriptEnabled: true,
+        additionalData: '@import "./src/styles/variables.scss";',
+      },
+    },
+  },
 })
