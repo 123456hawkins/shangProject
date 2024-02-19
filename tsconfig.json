@@ -5,7 +5,11 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-
+    "types": ["element-plus/global"],
+    "baseUrl": "./",
+    "paths": {//相对路径，相对于baseUrl
+      "@/*":["src/*"]
+    },
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
