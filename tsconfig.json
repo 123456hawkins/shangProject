@@ -7,8 +7,9 @@
     "skipLibCheck": true,
     "types": ["element-plus/global"],
     "baseUrl": "./",
-    "paths": {//相对路径，相对于baseUrl
-      "@/*":["src/*"]
+    "paths": {
+      //相对路径，相对于baseUrl
+      "@/*": ["src/*"]
     },
     /* Bundler mode */
     "moduleResolution": "bundler",
