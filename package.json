@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite --open",
     "build": "vue-tsc && vite build",
-    "build:test":"vue-tsc && vite build --mode test",
-    "build:pro":"vue-tsc && vite build --mode production",
+    "build:test": "vue-tsc && vite build --mode test",
+    "build:pro": "vue-tsc && vite build --mode production",
     "preview": "vite preview",
     "lint": "eslint src",
     "fix": "eslint src --fix",
@@ -55,6 +55,7 @@
     "husky": "^8.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vue-tsc": "^1.8.25"
   }
 }
