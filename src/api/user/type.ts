@@ -1,5 +1,6 @@
 interface dataType {
-  token: string
+  token?: string
+  message?: string
 }
 interface userInfo {
   userId: number
