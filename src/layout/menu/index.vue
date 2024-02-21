@@ -44,6 +44,7 @@
           </el-icon>
           <span>{{ item.meta.title }}</span>
         </template>
+        <!-- 递归 -->
         <Menu :menu-list="item.children" />
       </el-sub-menu>
       ​
