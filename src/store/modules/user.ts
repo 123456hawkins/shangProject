@@ -37,7 +37,7 @@ const useUserStore = defineStore('User', {
     },
     async userLogout() {
       // const res=await reqLogout()
-     },
+    },
   },
   getters: {},
 })
