@@ -1,33 +1,55 @@
 <template>
   <div class="container">
-    <div class="top">123</div>
-    <div class="left-slider">
-      <Logo></Logo>
+    <!-- 顶部菜单 -->
+    <div
+      class="top"
+      :class="{ fold: LayOutSettingStore.isCollapse ? true : false }"
+    >
+      <Tabbar></Tabbar>
+    </div>
+    <!-- 左侧菜单 -->
+    
+    <div
+      class="left-slider"
+      :class="{ fold: LayOutSettingStore.isCollapse ? true : false }"
+    >
       <el-scrollbar class="myScrollbar">
-        <!-- <p v-for="item in 20" :key="item" class="scrollbar-demo-item">
-          {{ item }}
-        </p> -->
         <el-menu
-          default-active="2"
           class="el-menu-vertical-demo"
-          background-color="001529"
-          text-color="#ffffff"
+          :default-active="$route.path"
+          active-text-color="#fff"
+          background-color="#001529"
+          text-color="#959ea6"
+          :collapse="LayOutSettingStore.isCollapse"
+          :router="true"
         >
+          <Logo></Logo>
           <Menu :menuList="useStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
-    <div class="main"><Main></Main></div>
+    <!-- main -->
+    <div
+      class="main"
+      :class="{ fold: LayOutSettingStore.isCollapse ? true : false }"
+    >
+      <Main></Main>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import Menu from './menu/index.vue'
+import Tabbar from './tabbar/index.vue'
 import Logo from './logo/index.vue'
 import Main from './main/index.vue'
 import useUserStore from '@/store/modules/user'
+import useLayOutLayOutSettingStore from '@/store/modules/setting'
 const useStore = useUserStore()
+const LayOutSettingStore = useLayOutLayOutSettingStore()
+let $route = useRouter()
 </script>
 <style scoped lang="scss">
 .container {
@@ -35,22 +57,30 @@ const useStore = useUserStore()
   height: 100vh;
   background: red;
   .top {
+    transition: all 0.3s;
     width: calc(100% - $base-menu-width);
     height: $base-tabbar-height;
     position: fixed;
-    background: cyan;
     top: 0px;
     left: $base-menu-width;
+    &.fold {
+      width: calc(100vw - $base-menu-min-width);
+      left: $base-menu-min-width;
+    }
   }
   .left-slider {
     height: 100%;
     width: $base-menu-width;
     background-color: $base-menu-background;
+    transition: all 0.3s;
     .myScrollbar {
       height: calc(100% - $base-menu-logo-height);
       .el-menu {
         border-right: none;
       }
+    }
+    &.fold {
+      width: $base-menu-min-width;
     }
     .scrollbar-demo-item {
       display: flex;
@@ -65,6 +95,7 @@ const useStore = useUserStore()
     }
   }
   .main {
+    transition: all 0.3s;
     position: absolute;
     overflow: auto;
     width: calc(100% - $base-menu-width);
@@ -72,6 +103,10 @@ const useStore = useUserStore()
     background: yellowgreen;
     left: $base-menu-width;
     top: $base-tabbar-height;
+    &.fold {
+      width: calc(100vw - $base-menu-min-width);
+      left: $base-menu-min-width;
+    }
   }
 }
 </style>
