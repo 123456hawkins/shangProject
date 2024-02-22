@@ -2,14 +2,15 @@
   <div class="toolbar">
     <div class="toolbar_left">
       <breadcrumb></breadcrumb>
+      
     </div>
-    <div class="toolbar_right">456</div>
+    <div class="toolbar_right"><setting></setting></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ArrowRight } from '@element-plus/icons-vue'
 import breadcrumb from './breadcrumb/index.vue'
+import setting from './setting/index.vue'
 </script>
 <style scoped lang="scss">
 .toolbar {
