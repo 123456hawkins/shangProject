@@ -63,7 +63,7 @@ const updateRefsh = () => {
   // 刷新就是销毁路由再重新生成
   layoutSettingStore.refsh = !layoutSettingStore.refsh
 }
-
+// 全屏功能
 const fullScreen = () => {
   let full = document.fullscreenElement
   if (!full) {

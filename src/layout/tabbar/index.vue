@@ -2,7 +2,6 @@
   <div class="toolbar">
     <div class="toolbar_left">
       <breadcrumb></breadcrumb>
-      
     </div>
     <div class="toolbar_right"><setting></setting></div>
   </div>

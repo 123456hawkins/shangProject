@@ -1,4 +1,4 @@
-import { reqLogin } from '@/api/user'
+import { reqLogin, reqUserInfo } from '@/api/user'
 import { loginFormData, loginResponseData } from '@/api/user/type'
 import { defineStore } from 'pinia'
 import type { UserState } from './type/type'
@@ -8,6 +8,8 @@ const useUserStore = defineStore('User', {
     return {
       token: localStorage.getItem('token'),
       menuRoutes: constantRoute,
+      username: '',
+      avatar: '',
     }
   },
   actions: {
@@ -20,6 +22,16 @@ const useUserStore = defineStore('User', {
         return 'ok'
       } else {
         return Promise.reject(new Error(res.data.message))
+      }
+    },
+    // 获取用户信息
+    async userInfo() {
+      const res: any = await reqUserInfo()
+      console.log('res', res)
+      if (res.code === 200) {
+        this.avatar = res.data.checkUser.avatar
+        this.username = res.data.checkUser.username
+      } else {
       }
     },
   },

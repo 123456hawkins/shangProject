@@ -48,6 +48,7 @@ import { ref } from 'vue'
 import useUserStore from '@/store/modules/user'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElNotification, FormInstance } from 'element-plus'
+
 import getTime from '@/utils/time'
 let $router = useRouter()
 let useStore = useUserStore()
@@ -88,6 +89,8 @@ const login = async (formEl: FormInstance | undefined) => {
             title: `Hi, ${msg}`,
             message: '欢迎回来',
           })
+          await useStore.userInfo()
+
           $router.push('/')
         }
       } else {
