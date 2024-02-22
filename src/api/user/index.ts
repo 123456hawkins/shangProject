@@ -18,3 +18,6 @@ export const reqLogin = (data: loginFormData) =>
 export const reqUserInfo = () => {
   return request.get<any, userInfoResponseData>(API.USERINGO_URL)
 }
+// export const reqLogout=()=>{
+//   request.post<any,>
+// }

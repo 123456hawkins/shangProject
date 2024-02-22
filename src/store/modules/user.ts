@@ -8,8 +8,8 @@ const useUserStore = defineStore('User', {
     return {
       token: localStorage.getItem('token'),
       menuRoutes: constantRoute,
-      username: '',
-      avatar: '',
+      username: localStorage.getItem('username'),
+      avatar: localStorage.getItem('avatar'),
     }
   },
   actions: {
@@ -28,12 +28,16 @@ const useUserStore = defineStore('User', {
     async userInfo() {
       const res: any = await reqUserInfo()
       console.log('res', res)
+
       if (res.code === 200) {
-        this.avatar = res.data.checkUser.avatar
-        this.username = res.data.checkUser.username
+        localStorage.setItem('avatar', res.data.checkUser.avatar)
+        localStorage.setItem('username', res.data.checkUser.username)
       } else {
       }
     },
+    async userLogout() {
+      // const res=await reqLogout()
+     },
   },
   getters: {},
 })

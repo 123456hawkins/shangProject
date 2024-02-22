@@ -48,9 +48,10 @@ import { ref } from 'vue'
 import useUserStore from '@/store/modules/user'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElNotification, FormInstance } from 'element-plus'
-
+import { useRoute } from 'vue-router'
 import getTime from '@/utils/time'
 let $router = useRouter()
+const $route = useRoute()
 let useStore = useUserStore()
 const ruleFormRef = ref<FormInstance>()
 const loading = ref(false)
@@ -82,6 +83,9 @@ const login = async (formEl: FormInstance | undefined) => {
       if (valid) {
         loading.value = true
         const res = await useStore.login(userForm.value)
+        let redirect: string = $route.query.redirect as string
+        // 如果login有地址参数就跳转到相应地址
+        $router.push({ path: redirect || '/' })
         if (res === 'ok') {
           let msg = getTime()
           ElNotification({
