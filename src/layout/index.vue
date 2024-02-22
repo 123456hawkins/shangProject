@@ -8,7 +8,7 @@
       <Tabbar></Tabbar>
     </div>
     <!-- 左侧菜单 -->
-    
+
     <div
       class="left-slider"
       :class="{ fold: LayOutSettingStore.isCollapse ? true : false }"
@@ -21,7 +21,6 @@
           background-color="#001529"
           text-color="#959ea6"
           :collapse="LayOutSettingStore.isCollapse"
-          :router="true"
         >
           <Logo></Logo>
           <Menu :menuList="useStore.menuRoutes"></Menu>

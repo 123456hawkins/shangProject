@@ -10,7 +10,6 @@
 <script setup lang="ts">
 import { ArrowRight } from '@element-plus/icons-vue'
 import breadcrumb from './breadcrumb/index.vue'
-
 </script>
 <style scoped lang="scss">
 .toolbar {

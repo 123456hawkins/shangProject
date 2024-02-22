@@ -58,6 +58,7 @@ export const constantRoute = [
       hidden: false,
       icon: 'Lock',
     },
+    // 重定向到子路由的第一个
     redirect: '/acl/user',
     children: [
       {
