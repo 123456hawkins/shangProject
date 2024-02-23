@@ -84,8 +84,7 @@ const login = async (formEl: FormInstance | undefined) => {
         loading.value = true
         const res = await useStore.login(userForm.value)
         let redirect: string = $route.query.redirect as string
-        // 如果login有地址参数就跳转到相应地址
-        $router.push({ path: redirect || '/' })
+
         if (res === 'ok') {
           let msg = getTime()
           ElNotification({
@@ -94,8 +93,9 @@ const login = async (formEl: FormInstance | undefined) => {
             message: '欢迎回来',
           })
           await useStore.userInfo()
-
-          $router.push('/')
+          // 如果login有地址参数就跳转到相应地址
+          $router.push({ path: redirect || '/' })
+          // $router.push('/')
         }
       } else {
         // console.log(fields)

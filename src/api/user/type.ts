@@ -28,3 +28,9 @@ export interface userInfoResponseData {
   code: number
   data: user
 }
+export interface userLogoutResponseData {
+  code: number
+  data: {
+    message: string
+  }
+}

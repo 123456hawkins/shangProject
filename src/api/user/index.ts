@@ -4,6 +4,7 @@ import type {
   loginFormData,
   loginResponseData,
   userInfoResponseData,
+  userLogoutResponseData,
 } from './type'
 // 统一管理接口
 enum API {
@@ -18,6 +19,4 @@ export const reqLogin = (data: loginFormData) =>
 export const reqUserInfo = () => {
   return request.get<any, userInfoResponseData>(API.USERINGO_URL)
 }
-// export const reqLogout=()=>{
-//   request.post<any,>
-// }
+export const reqLogOut = () => request.post<any, any>(API.LOGOUT_URL)

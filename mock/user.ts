@@ -1,4 +1,7 @@
 //用户信息数据
+
+import { method } from 'lodash'
+
 // 此函数执行会返回一个数组
 function createUserList() {
   return [
@@ -65,6 +68,24 @@ export default [
       }
       //如果有返回成功信息
       return { code: 200, data: { checkUser } }
+    },
+  },
+  // 退出登录接口
+  {
+    url: '/api/user/logout',
+    method: 'post',
+    response: (request) => {
+      //获取请求头携带token
+      const token = request.headers.token
+      //查看用户信息是否包含有次token用户
+      const checkUser = createUserList().find((item) => item.token === token)
+      //没有返回失败的信息
+      if (!checkUser) {
+        return { code: 301, data: { message: 'token失效' } }
+      } else {
+        //如果有返回成功信息
+        return { code: 200, data: { message: '退出登录成功' } }
+      }
     },
   },
 ]

@@ -1,5 +1,9 @@
-import { reqLogin, reqUserInfo } from '@/api/user'
-import { loginFormData, loginResponseData } from '@/api/user/type'
+import { reqLogOut, reqLogin, reqUserInfo } from '@/api/user'
+import {
+  loginFormData,
+  loginResponseData,
+  userLogoutResponseData,
+} from '@/api/user/type'
 import { defineStore } from 'pinia'
 import type { UserState } from './type/type'
 import { constantRoute } from '@/router/routes'
@@ -36,7 +40,22 @@ const useUserStore = defineStore('User', {
       }
     },
     async userLogout() {
-      // const res=await reqLogout()
+      const res: userLogoutResponseData = await reqLogOut()
+      console.log('tuichu', res)
+
+      if (res.code === 200) {
+        this.token = ''
+        this.username = ''
+        this.avatar = ''
+        localStorage.removeItem('token')
+        localStorage.removeItem('username')
+        localStorage.removeItem('avatar')
+        // dynamicRoutes.forEach((route) => {
+        //   router.removeRoute(route.name)
+        // })
+      } else {
+        return Promise.reject(new Error('logout error'))
+      }
     },
   },
   getters: {},
