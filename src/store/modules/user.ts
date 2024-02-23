@@ -7,6 +7,7 @@ import {
 import { defineStore } from 'pinia'
 import type { UserState } from './type/type'
 import { constantRoute } from '@/router/routes'
+import { ElNotification } from 'element-plus'
 const useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
@@ -17,15 +18,22 @@ const useUserStore = defineStore('User', {
     }
   },
   actions: {
-    async login(data: loginFormData) {
-      const res: loginResponseData = await reqLogin(data)
+    async login(data: any) {
+      const res: any = await reqLogin(data)
+      console.log(res)
+
       // console.log(res)
       if (res.code === 200) {
-        this.token = res.data.token as string
-        localStorage.setItem('token', res.data.token as string)
+        this.token = res.data as string
+        localStorage.setItem('token', res.data as string)
         return 'ok'
       } else {
-        return Promise.reject(new Error(res.data.message))
+        // return Promise.reject(new Error(res.data.message))
+        ElNotification({
+          type: 'error',
+          title: `登录失败`,
+          message: res.data,
+        })
       }
     },
     // 获取用户信息
@@ -34,9 +42,11 @@ const useUserStore = defineStore('User', {
       console.log('res', res)
 
       if (res.code === 200) {
-        localStorage.setItem('avatar', res.data.checkUser.avatar)
-        localStorage.setItem('username', res.data.checkUser.username)
+        localStorage.setItem('avatar', res.data.avatar)
+        localStorage.setItem('username', res.data.name)
+        return 'ok'
       } else {
+        return Promise.reject(new Error(res.message))
       }
     },
     async userLogout() {

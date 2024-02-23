@@ -82,7 +82,7 @@ const login = async (formEl: FormInstance | undefined) => {
     await formEl.validate(async (valid, fields) => {
       if (valid) {
         loading.value = true
-        const res = await useStore.login(userForm.value)
+        const res: any = await useStore.login(userForm.value)
         let redirect: string = $route.query.redirect as string
 
         if (res === 'ok') {
@@ -92,9 +92,17 @@ const login = async (formEl: FormInstance | undefined) => {
             title: `Hi, ${msg}`,
             message: '欢迎回来',
           })
-          await useStore.userInfo()
-          // 如果login有地址参数就跳转到相应地址
-          $router.push({ path: redirect || '/' })
+          const infoRes = await useStore.userInfo()
+          if (infoRes === 'ok') {
+            // 如果login有地址参数就跳转到相应地址
+            $router.push({ path: redirect || '/' })
+          } else {
+            ElNotification({
+              type: 'error',
+              title: `获取信息失败`,
+            })
+          }
+
           // $router.push('/')
         }
       } else {
