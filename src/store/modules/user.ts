@@ -1,13 +1,14 @@
 import { reqLogOut, reqLogin, reqUserInfo } from '@/api/user'
-import {
-  loginFormData,
-  loginResponseData,
-  userLogoutResponseData,
-} from '@/api/user/type'
 import { defineStore } from 'pinia'
 import type { UserState } from './type/type'
 import { constantRoute } from '@/router/routes'
 import { ElNotification } from 'element-plus'
+import {
+  loginFormData,
+  loginResponseData,
+  logoutResponseData,
+  userInfoResponseData,
+} from './type'
 const useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
@@ -18,8 +19,8 @@ const useUserStore = defineStore('User', {
     }
   },
   actions: {
-    async login(data: any) {
-      const res: any = await reqLogin(data)
+    async login(data: loginFormData) {
+      const res: loginResponseData = await reqLogin(data)
       console.log(res)
 
       // console.log(res)
@@ -38,7 +39,7 @@ const useUserStore = defineStore('User', {
     },
     // 获取用户信息
     async userInfo() {
-      const res: any = await reqUserInfo()
+      const res: userInfoResponseData = await reqUserInfo()
       console.log('res', res)
 
       if (res.code === 200) {
@@ -50,7 +51,7 @@ const useUserStore = defineStore('User', {
       }
     },
     async userLogout() {
-      const res: userLogoutResponseData = await reqLogOut()
+      const res: logoutResponseData = await reqLogOut()
       console.log('tuichu', res)
 
       if (res.code === 200) {

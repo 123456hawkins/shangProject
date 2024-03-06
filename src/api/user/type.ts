@@ -1,36 +1,27 @@
-interface dataType {
-  token?: string
-  message?: string
-}
-interface userInfo {
-  userId: number
-  avatar: string
-  username: string
-  password: string
-  desc: string
-  roles: string[]
-  buttons: string[]
-  routes: string[]
-  token: string
-}
-interface user {
-  checkUser: userInfo
-}
 export interface loginFormData {
   username: string
   password: string
 }
-export interface loginResponseData {
+// 定义接口统一返回公共类型
+export interface ResponseData {
   code: number
-  data: dataType
+  message: string
+  ok: boolean
 }
-export interface userInfoResponseData {
-  code: number
-  data: user
+// 登录接口返回数据类型
+export interface loginResponseData extends ResponseData {
+  data: string
 }
-export interface userLogoutResponseData {
-  code: number
-  data: {
-    message: string
-  }
+export interface userInfoResponseData extends ResponseData {
+  data: Data
+}
+export interface logoutResponseData extends ResponseData {
+  data: any
+}
+export interface Data {
+  routes: string[]
+  buttons: string[]
+  roles: string[]
+  name: string
+  avatar: string
 }

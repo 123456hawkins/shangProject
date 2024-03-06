@@ -5,7 +5,7 @@ import nprogress from 'nprogress'
 import 'nprogress/nprogress.css'
 import pinia from './store'
 import useUserStore from './store/modules/user'
-import { ElNotification, tabBarProps } from 'element-plus'
+import { ElNotification } from 'element-plus'
 const userStore = useUserStore(pinia)
 // 未登录不能访问除了登录页面的其他页面
 // 扽了后不能访问登录页面

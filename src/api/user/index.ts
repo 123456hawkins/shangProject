@@ -1,5 +1,11 @@
 // 统一管理用户接口
 import request from '@/utils/request'
+import {
+  loginFormData,
+  loginResponseData,
+  logoutResponseData,
+  userInfoResponseData,
+} from './type'
 // import type {
 //   loginFormData,
 //   loginResponseData,
@@ -28,9 +34,10 @@ enum API {
   LOGOUT_URL = '/admin/acl/index/logout',
   MENU_URL = '/admin/acl/index/menu',
 }
-export const reqLogin = (data: any) =>
-  request.post<any, any>(API.LOGIN_URL, data)
+export const reqLogin = (data: loginFormData) =>
+  request.post<any, loginResponseData>(API.LOGIN_URL, data)
 export const reqUserInfo = () => {
-  return request.get<any, any>(API.USERINGO_URL)
+  return request.get<any, userInfoResponseData>(API.USERINGO_URL)
 }
-export const reqLogOut = () => request.post<any, any>(API.LOGOUT_URL)
+export const reqLogOut = () =>
+  request.post<any, logoutResponseData>(API.LOGOUT_URL)
