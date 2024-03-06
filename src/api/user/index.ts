@@ -1,43 +1,28 @@
-// 统一管理用户接口
+/*
+ * @Author: HuangPei
+ * @Date: 2024-03-06 10:34:39
+ * @Last Modified by: Hawkins
+ * @Last Modified time: 2024-03-06 10:43:40
+ */
+
+// 统一管理用户相关接口
 import request from '@/utils/request'
-import {
-  loginFormData,
-  loginResponseData,
-  logoutResponseData,
+import type {
+  LoginFormData,
+  LoginResponseData,
   userInfoResponseData,
 } from './type'
-// import type {
-//   loginFormData,
-//   loginResponseData,
-//   userInfoResponseData,
-//   userLogoutResponseData,
-// } from './type'
-// // 统一管理接口
-// enum API {
-//   LOGIN_URL = '/user/login',
-//   USERINGO_URL = '/user/info',
-//   LOGOUT_URL = '/user/logout',
-// }
-// // 暴露请求函数
-// // 登录接口方法
-// export const reqLogin = (data: loginFormData) =>
-//   request.post<any, loginResponseData>(API.LOGIN_URL, data)
-// export const reqUserInfo = () => {
-//   return request.get<any, userInfoResponseData>(API.USERINGO_URL)
-// }
-// export const reqLogOut = () =>
-//   request.post<any, userLogoutResponseData>(API.LOGOUT_URL)
 
 enum API {
   LOGIN_URL = '/admin/acl/index/login',
-  USERINGO_URL = '/admin/acl/index/info',
+  USERINFO_URL = '/admin/acl/index/info',
   LOGOUT_URL = '/admin/acl/index/logout',
-  MENU_URL = '/admin/acl/index/menu',
 }
-export const reqLogin = (data: loginFormData) =>
-  request.post<any, loginResponseData>(API.LOGIN_URL, data)
-export const reqUserInfo = () => {
-  return request.get<any, userInfoResponseData>(API.USERINGO_URL)
-}
-export const reqLogOut = () =>
-  request.post<any, logoutResponseData>(API.LOGOUT_URL)
+
+export const reqLogin = (data: LoginFormData) =>
+  request.post<any, LoginResponseData>(API.LOGIN_URL, data)
+
+export const reqUserInfo = () =>
+  request.get<any, userInfoResponseData>(API.USERINFO_URL)
+
+export const reqLogOut = () => request.post<any, any>(API.LOGOUT_URL)

@@ -141,7 +141,7 @@ import type {
   MenuList,
 } from '@/api/acl/role/type'
 import useLayOutSettingStore from '@/store/modules/setting'
-import { ElMessage } from 'element-plus';
+import { ElMessage } from 'element-plus'
 let pageNo = ref<number>(1)
 
 let pageSize = ref<number>(10)
@@ -246,9 +246,12 @@ const setPermission = async (row: RoleData) => {
   drawer.value = true
   Object.assign(RoleParams, row)
   let res: MenuResponseData = await reqAllMenuList(RoleParams.id as number)
+  console.log('quan', res)
+
   if (res.code === 200) {
     menuArr.value = res.data
     selectArr.value = filterSelectArr(menuArr.value, [])
+    console.log('selectarr', selectArr.value)
   }
 }
 
@@ -259,6 +262,7 @@ const defaultProps = {
 
 const filterSelectArr = (allData: any, initArr: any) => {
   allData.forEach((item: any) => {
+    // 判断最底层的即可
     if (item.select && item.level === 4) {
       initArr.push(item.id)
     }
@@ -271,9 +275,14 @@ const filterSelectArr = (allData: any, initArr: any) => {
 
 const handler = async () => {
   const roleId = RoleParams.id as number
+  // 选中节点id
   let arr = tree.value.getCheckedKeys()
+  // 半选id
   let arr1 = tree.value.getHalfCheckedKeys()
+
   let permissionId = arr.concat(arr1)
+  console.log(arr, arr1, permissionId)
+
   let res: any = await reqSetPermission(roleId, permissionId)
   if (res.code === 200) {
     drawer.value = false

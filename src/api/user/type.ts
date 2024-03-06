@@ -1,27 +1,33 @@
-export interface loginFormData {
-  username: string
-  password: string
+/*
+ * @Description: Stay hungry，Stay foolish
+ * @Author: Huccct
+ * @Date: 2023-05-19 17:16:03
+ * @LastEditors: Huccct
+ * @LastEditTime: 2023-05-23 21:32:17
+ */
+
+// 登录接口需要携带参数ts类型
+export interface LoginFormData {
+  username?: string
+  password?: string
 }
-// 定义接口统一返回公共类型
+
 export interface ResponseData {
-  code: number
-  message: string
-  ok: boolean
+  code?: number
+  message?: string
+  ok?: boolean
 }
-// 登录接口返回数据类型
-export interface loginResponseData extends ResponseData {
-  data: string
+
+export interface LoginResponseData extends ResponseData {
+  data?: string
 }
+
 export interface userInfoResponseData extends ResponseData {
-  data: Data
-}
-export interface logoutResponseData extends ResponseData {
-  data: any
-}
-export interface Data {
-  routes: string[]
-  buttons: string[]
-  roles: string[]
-  name: string
-  avatar: string
+  data: {
+    routes: string[]
+    buttons: string[]
+    roles: string[]
+    name: string
+    avatar: string
+  }
 }
