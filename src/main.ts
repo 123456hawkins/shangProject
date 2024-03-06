@@ -6,6 +6,8 @@ import 'element-plus/dist/index.css'
 import 'virtual:svg-icons-register'
 // 引入全局样式
 import '@/styles/index.scss'
+// 暗黑模式实现
+import 'element-plus/theme-chalk/dark/css-vars.css'
 // 注册全局组件
 import globalComponent from './components/index'
 import router from './router'

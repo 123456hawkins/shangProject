@@ -54,7 +54,6 @@ let $route = useRouter()
 .container {
   width: 100%;
   height: 100vh;
-  background: red;
   .top {
     transition: all 0.3s;
     width: calc(100% - $base-menu-width);
@@ -90,7 +89,7 @@ let $route = useRouter()
       text-align: center;
       border-radius: 4px;
       background: var(--el-color-primary-light-9);
-      color: var(--el-color-primary);
+      // color: var(--el-color-primary);
     }
   }
   .main {
@@ -99,7 +98,7 @@ let $route = useRouter()
     overflow: auto;
     width: calc(100% - $base-menu-width);
     height: calc(100% - $base-tabbar-height);
-    background: yellowgreen;
+
     left: $base-menu-width;
     top: $base-tabbar-height;
     &.fold {
