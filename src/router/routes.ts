@@ -49,6 +49,8 @@ export const constantRoute = [
       icon: 'Platform',
     },
   },
+]
+export const asyncRoute = [
   {
     path: '/acl',
     component: () => import('@/layout/index.vue'),
@@ -146,14 +148,14 @@ export const constantRoute = [
       },
     ],
   },
-  {
-    // 其他任意路由重定向到404
-    path: '/:pathMatch(.*)*',
-    redirect: '404',
-    meta: {
-      title: 'any',
-      hidden: true,
-      icon: 'HomeFilled',
-    },
-  },
 ]
+export const anyRoute = {
+  // 其他任意路由重定向到404
+  path: '/:pathMatch(.*)*',
+  redirect: '404',
+  meta: {
+    title: 'any',
+    hidden: true,
+    icon: 'HomeFilled',
+  },
+}

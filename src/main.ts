@@ -13,9 +13,10 @@ import globalComponent from './components/index'
 import router from './router'
 import pinia from './store'
 const app = createApp(App)
-app.use(router)
+
 // 引入路由鉴权
 import './permissions'
+app.use(router)
 app.use(pinia)
 app.use(globalComponent)
 app.use(ElementPlus)

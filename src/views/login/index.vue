@@ -49,7 +49,7 @@ import useUserStore from '@/store/modules/user'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElNotification, FormInstance } from 'element-plus'
 import { useRoute } from 'vue-router'
-import getTime from '@/utils/time'
+import { getTime } from '@/utils/time'
 let $router = useRouter()
 const $route = useRoute()
 let useStore = useUserStore()
@@ -93,6 +93,8 @@ const login = async (formEl: FormInstance | undefined) => {
             message: '欢迎回来',
           })
           const infoRes = await useStore.userInfo()
+          console.log('infoRes', infoRes)
+
           if (infoRes === 'ok') {
             // 如果login有地址参数就跳转到相应地址
             $router.push({ path: redirect || '/' })

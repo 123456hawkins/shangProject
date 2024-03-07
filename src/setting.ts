@@ -1,5 +1,5 @@
 export default {
-  title: '硅谷运营平台',
+  title: '测试平台',
   logo: '/logo.png',
   logoHidden: true,
 }

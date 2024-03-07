@@ -28,7 +28,10 @@ router.beforeEach(async (to: any, from: any, next: any) => {
         // 有用户信息就放行没有就不放行
         try {
           await userStore.userInfo()
-          next()
+          // 万一刷新的时候是异步路由，有可能获取到用户信息、异步路由还没有加载完毕，出现空白页效果
+          // 保证页面加载完毕后再放行
+          next({ ...to })
+          // next()
         } catch (error) {
           // token失效
           ElNotification({ type: 'error', message: 'token过期' })
@@ -47,7 +50,7 @@ router.beforeEach(async (to: any, from: any, next: any) => {
     }
   }
 
-  next()
+  // next()
 })
 // 项目中任意路由切换后都会切换
 router.afterEach((to: any, from: any) => {
