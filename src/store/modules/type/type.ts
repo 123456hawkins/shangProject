@@ -4,6 +4,7 @@ export interface UserState {
   menuRoutes: RouteRecordRaw[]
   username: string | null
   avatar: string | null
+  buttons: []
 }
 export interface SettingState {
   fold: boolean

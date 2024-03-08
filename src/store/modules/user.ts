@@ -33,6 +33,7 @@ const useUserStore = defineStore('User', {
       menuRoutes: constantRoute,
       username: '',
       avatar: '',
+      buttons: [],
     }
   },
   actions: {
@@ -62,6 +63,7 @@ const useUserStore = defineStore('User', {
       if (res.code === 200) {
         this.username = res.data.name as string
         this.avatar = res.data.avatar as string
+        this.buttons = res.data.buttons
         // 过滤路由,对比异步路由表和请求到的数据表
         const userAsyncRoute = filterAsyncRoute(
           cloneDeep(asyncRoute),

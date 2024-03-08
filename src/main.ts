@@ -8,12 +8,14 @@ import 'virtual:svg-icons-register'
 import '@/styles/index.scss'
 // 暗黑模式实现
 import 'element-plus/theme-chalk/dark/css-vars.css'
+// 引入按钮显示隐藏指令
+import { isHasButton } from './directive/has'
 // 注册全局组件
 import globalComponent from './components/index'
 import router from './router'
 import pinia from './store'
 const app = createApp(App)
-
+isHasButton(app)
 // 引入路由鉴权
 import './permissions'
 app.use(router)
